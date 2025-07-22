@@ -3,11 +3,11 @@ marimo_edit:
     uv run marimo edit notebook.py
 
 marimo_read:
-    uv reade marimo read notebook.py
+    uv run marimo read notebook.py
 
 export_readonly:
-    marimo export html-wasm notebook.py -o output_dir --mode run
+   uv run marimo export html-wasm notebook.py -o build --mode run
 
 # Export as an editable notebook
 export_edit:
-    marimo export html-wasm notebook.py -o output_dir --mode edit
+    uv run marimo export html-wasm notebook.py -o build --mode edit

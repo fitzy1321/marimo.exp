@@ -27,7 +27,7 @@ def _(csv_path):
 
     pdf = pl.read_csv(csv_path)
     pdf
-    return
+    return pdf, pl
 
 
 @app.cell(hide_code=True)
@@ -45,6 +45,16 @@ def _(mo):
     Maybe some kind of population data? IDK, some kind of large data set.
     """
     )
+    return
+
+
+@app.cell
+def _(pdf, pl):
+    unique_category_count = pdf.select(
+        pl.col("Category").alias(name="Unique Values").unique(),
+        pl.col("Category").alias(name="Counts").unique_counts(),
+    )
+    unique_category_count
     return
 
 
