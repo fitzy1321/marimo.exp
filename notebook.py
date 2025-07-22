@@ -16,7 +16,7 @@ def _(mo):
         r"""
     # Welcome to my first Marimo Notebook!
 
-    Hosted on Github Pages.
+    Hosted on Github Pages. Github [repo link](https://github.com/fitzy1321/marimo_exp)
 
     **FYI**: You can edit this notebook, but it *shouldn't* save to the server? I think?
 
