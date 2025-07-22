@@ -6,13 +6,18 @@ app = marimo.App(width="medium")
 
 @app.cell
 def _():
+    import os
     from pathlib import Path
-
+    from pprint import pprint
     import marimo as mo  # noqa: F401
     import polars as pl
 
-    file_path = mo.notebook_dir() or Path("./")
-    polar_df = pl.read_csv(file_path / "large_random_data.csv")
+    if "__MISE_ORIG_PATH" not in dict(os.environ):
+        csv_path = "https://fitzy1321.github.io/marimo_exp/large_random_data.csv"
+    else:
+        csv_path = Path("assets/large_random_data.csv")
+    
+    polar_df = pl.read_csv(csv_path)
     polar_df
     return
 

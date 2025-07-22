@@ -32,11 +32,9 @@ jobs:
         run: touch output/.nojekyll
       # 7. Copy Other Files to dir
       - name: Move other files
-        run: find assets/. -type f -maxdepth 1 -name "*.csv" -exec cp {} output/assets/ \;
-      - name: check manifests
-        run: cat output/site.webmanifest
+        run: find assets/. -type f -maxdepth 1 -name "*.csv" -exec cp {} output/ \;
       - name: List output dir (debug)
-        run: ls -al output/assets
+        run: ls -al output
       # 8. Upload the exported HTML as an artifact for deployment
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
