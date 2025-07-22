@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   build:
-    name: Build & Export
+    name: Build, Export, and Deploy
     runs-on: ubuntu-latest
     steps:
       # 1. Check out your repository code
@@ -33,24 +33,7 @@ jobs:
           mkdir -p output/data
           mv data output/data
       # 8. Upload the exported HTML as an artifact for deployment
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: output/**
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      # 8. Deploy the artifact to GitHub Pages
       - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          artifact_name: github-pages
+          folder: output
