@@ -8,15 +8,18 @@ app = marimo.App(width="medium")
 def _():
     import os
     from pathlib import Path
-    from pprint import pprint
+
     import marimo as mo  # noqa: F401
     import polars as pl
 
     if "__MISE_ORIG_PATH" not in dict(os.environ):
-        csv_path = "https://fitzy1321.github.io/marimo_exp/large_random_data.csv"
+        # if not on 'my local'(i.e. has mise installed), get csv from github
+        csv_path = "https://raw.githubusercontent.com/fitzy1321/marimo_exp/refs/heads/main/assets/large_random_data.csv"
+        print("grabbing csv online")
     else:
         csv_path = Path("assets/large_random_data.csv")
-    
+        print("using local csv file")
+
     polar_df = pl.read_csv(csv_path)
     polar_df
     return
