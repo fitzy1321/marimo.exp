@@ -9,9 +9,15 @@ def _():
     import marimo as mo  # noqa: F401
     import polars as pl
 
-    polar_df = pl.read_csv("data/large_random_data.csv")
-    polar_df
-    return
+    polar_df = pl.read_csv("large_random_data.csv")
+    # polar_df
+    # return
+    import os
+    from pathlib import Path
+
+    cwd_path = Path(os.getcwd())
+    os.chdir("..")
+    os.listdir()
 
 
 if __name__ == "__main__":
