@@ -30,13 +30,19 @@ def _(csv_path):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
     # Welcome to my first Marimo Notebook!
 
     Hosted on Github Pages.
+
+    **FYI**: You can edit this notebook, but it *shouldn't* save to the server? I think?
+
+    Anyway, not sure what this notebook will be next. Maybe I'll find an actually interesting dataset to anaylze and visualize?
+
+    Maybe some kind of population data? IDK, some kind of large data set.
     """
     )
     return
