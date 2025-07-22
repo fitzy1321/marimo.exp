@@ -9,7 +9,6 @@ def _():
     import os
 
     import marimo as mo  # noqa: F401
-    import polars as pl
 
     # if not on 'my local'(i.e. has mise installed), get csv from github
     # TODO: need a better way to determine where this is being executed
@@ -19,9 +18,15 @@ def _():
         if "__MISE_ORIG_PATH" not in dict(os.environ)
         else "assets/large_random_data.csv"
     )
+    return (csv_path,)
 
-    polar_df = pl.read_csv(csv_path)
-    polar_df
+
+@app.cell
+def _(csv_path):
+    import polars as pl
+
+    pdf = pl.read_csv(csv_path)
+    pdf
     return
 
 
