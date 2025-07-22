@@ -31,7 +31,25 @@ jobs:
       - name: Add .nojekyll
         run: touch output/.nojekyll
       # 7. Upload the exported HTML as an artifact for deployment
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          folder: output
+          path: output
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages
