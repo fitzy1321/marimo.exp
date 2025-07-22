@@ -7,6 +7,7 @@ app = marimo.App(width="medium", app_title="Fitzy1321 Marimo Notebook")
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 
@@ -32,14 +33,11 @@ def _(mo):
 def _():
     import os
 
-
-    # if not on 'my local'(i.e. has mise installed), get csv from github
-    # TODO: need a better way to determine where this is being executed
-    # choices: local, published to ghpages, deployed else where?
+    # Choose local csv or remote, depending on ENVs
     csv_path = (
-        "https://raw.githubusercontent.com/fitzy1321/marimo_exp/refs/heads/main/assets/large_random_data.csv"
-        if "__MISE_ORIG_PATH" not in dict(os.environ)
-        else "assets/large_random_data.csv"
+        "assets/large_random_data.csv"
+        if os.getenv("MISE_SHELL") or os.getenv("UV")
+        else "https://raw.githubusercontent.com/fitzy1321/marimo_exp/refs/heads/main/assets/large_random_data.csv"
     )
     return (csv_path,)
 
