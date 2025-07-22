@@ -32,7 +32,7 @@ jobs:
         run: touch output/.nojekyll
       # 7. Copy Other Files to dir
       - name: Move other files
-        run: find assets/. -maxdepth 1 -name "*.csv" -exec cp {} output/assets/{} \;
+        run: find assets/. -type f -maxdepth 1 -name "*.csv" -exec cp {} output/assets/ \;
       - name: check manifests
         run: cat output/site.webmanifest
       - name: List output dir (debug)
