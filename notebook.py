@@ -6,14 +6,15 @@ app = marimo.App(width="medium")
 
 @app.cell
 def _():
+    from pathlib import Path
+
     import marimo as mo  # noqa: F401
     import polars as pl
 
-    polar_df = pl.read_csv("large_random_data.csv")
+    polar_df = pl.read_csv(mo.notebook_dir() or Path("./") / "large_random_data.csv")
     # polar_df
     # return
     import os
-    from pathlib import Path
 
     cwd_path = Path(os.getcwd())
     os.chdir("..")
