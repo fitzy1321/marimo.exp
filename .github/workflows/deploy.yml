@@ -8,7 +8,6 @@ permissions:
 
 jobs:
   build:
-    name: Build, Export, and Deploy
     runs-on: ubuntu-latest
     steps:
       # 1. Check out your repository code
