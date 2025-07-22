@@ -35,9 +35,9 @@ def _():
 
     # Choose local csv or remote, depending on ENVs
     csv_path = (
-        "assets/large_random_data.csv"
+        "assets/world_population.csv"
         if os.getenv("MISE_SHELL") or os.getenv("UV")
-        else "https://raw.githubusercontent.com/fitzy1321/marimo_exp/refs/heads/main/assets/large_random_data.csv"
+        else "https://raw.githubusercontent.com/fitzy1321/marimo_exp/refs/heads/main/assets/world_population.csv"
     )
     return (csv_path,)
 
@@ -46,18 +46,8 @@ def _():
 def _(csv_path):
     import polars as pl
 
-    pdf = pl.read_csv(csv_path)
+    pdf = pl.read_csv(csv_path, truncate_ragged_lines=True, separator=";")
     pdf
-    return pdf, pl
-
-
-@app.cell
-def _(pdf, pl):
-    unique_category_count = pdf.select(
-        pl.col("Category").alias(name="Unique Values").unique(),
-        pl.col("Category").alias(name="Counts").unique_counts(),
-    )
-    unique_category_count
     return
 
 
