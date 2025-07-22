@@ -12,13 +12,8 @@ def _():
     import polars as pl
 
     polar_df = pl.read_csv(mo.notebook_dir() or Path("./") / "large_random_data.csv")
-    # polar_df
-    # return
-    import os
-
-    cwd_path = Path(os.getcwd())
-    os.chdir("..")
-    os.listdir()
+    polar_df
+    return
 
 
 if __name__ == "__main__":
