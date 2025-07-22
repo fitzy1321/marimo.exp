@@ -6,15 +6,11 @@ app = marimo.App(width="medium")
 
 @app.cell
 def _():
-    # import polars as pl
-    # polar_df = pl.read_csv("large_random_data.csv")
-    # polar_df
-    import os
-
     import marimo as mo  # noqa: F401
+    import polars as pl
 
-    files = [f for f in os.listdir(".") if os.path.isfile(f)]
-    files
+    polar_df = pl.read_csv("data/large_random_data.csv")
+    polar_df
     return
 
 
