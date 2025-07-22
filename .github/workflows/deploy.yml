@@ -35,6 +35,8 @@ jobs:
         run: |
           mkdir -p output/data
           mv data output/data
+      - name: List output dir (debug)
+        run: ls -al output
       # 8. Upload the exported HTML as an artifact for deployment
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
