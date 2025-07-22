@@ -9,7 +9,7 @@ def _():
     import marimo as mo  # noqa: F401
     import polars as pl
 
-    polar_df = pl.read_csv("./large_random_data.csv")
+    polar_df = pl.read_csv("large_random_data.csv")
     polar_df
     return
 
