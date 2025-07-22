@@ -27,6 +27,9 @@ jobs:
       # 6. Add .nojekyll to prevent GitHub Pages from ignoring files/folders starting with "_"
       - name: Add .nojekyll
         run: touch output_dir/.nojekyll
+      # 7. Copy Other Files to dir
+      - name: Move other files
+        run: cp *.csv output_dir/*
       # 7. Upload the exported HTML as an artifact for deployment
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
