@@ -32,7 +32,9 @@ jobs:
         run: touch output/.nojekyll
       # 7. Copy Other Files to dir
       - name: Move other files
-        run: find . -maxdepth 1 -name "*.csv" -exec cp {} output/ \;
+        run: find . -maxdepth 1 -name "*.csv" -exec cp {} output/assets \;
+      - name: check manifest
+        run: cat output/assets/manifest.json
       - name: List output dir (debug)
         run: ls -al output
       # 8. Upload the exported HTML as an artifact for deployment

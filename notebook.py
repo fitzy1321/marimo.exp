@@ -11,7 +11,8 @@ def _():
     import marimo as mo  # noqa: F401
     import polars as pl
 
-    polar_df = pl.read_csv(mo.notebook_dir() or Path("./") / "large_random_data.csv")
+    file_path = mo.notebook_dir() or Path("./")
+    polar_df = pl.read_csv(file_path / "large_random_data.csv")
     polar_df
     return
 
