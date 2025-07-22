@@ -14,8 +14,7 @@ def _():
     import marimo as mo  # noqa: F401
 
     files = [f for f in os.listdir(".") if os.path.isfile(f)]
-    for f in files:
-        print(f)
+    files
     return
 
 
