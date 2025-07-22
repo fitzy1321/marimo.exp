@@ -8,7 +8,7 @@ app = marimo.App(width="medium")
 def _():
     import os
 
-    import marimo as mo  # noqa: F401
+    import marimo as mo
 
     # if not on 'my local'(i.e. has mise installed), get csv from github
     # TODO: need a better way to determine where this is being executed
@@ -18,7 +18,7 @@ def _():
         if "__MISE_ORIG_PATH" not in dict(os.environ)
         else "assets/large_random_data.csv"
     )
-    return (csv_path,)
+    return csv_path, mo
 
 
 @app.cell
@@ -27,6 +27,18 @@ def _(csv_path):
 
     pdf = pl.read_csv(csv_path)
     pdf
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(
+        r"""
+    # Welcome to my first Marimo Notebook!
+
+    Hosted on Github Pages.
+    """
+    )
     return
 
 
