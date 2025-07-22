@@ -8,3 +8,8 @@ dependencies = [
     "marimo>=0.14.12",
     "polars>=1.31.0",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.4",
+]
