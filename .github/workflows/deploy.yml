@@ -22,23 +22,23 @@ jobs:
       # 5. Export your Marimo dashboard to static HTML (WASM-powered)
       - name: Export Marimo notebooks
         run: |
-          mkdir -p output_dir
-          uv run marimo export html-wasm notebook.py -o output_dir/index.html --mode edit
+          mkdir -p output
+          uv run marimo export html-wasm notebook.py -o output/index.html --mode edit
       # 6. Add .nojekyll to prevent GitHub Pages from ignoring files/folders starting with "_"
       - name: Add .nojekyll
-        run: touch output_dir/.nojekyll
+        run: touch output/.nojekyll
       # 7. Copy Other Files to dir
       - name: Move other files
         run: |
-          mkdir -p output_dir/data
-          mv data output_dir/data
+          mkdir -p output/data
+          mv data output/data
       # 8. Upload the exported HTML as an artifact for deployment
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: |
-            output_dir
-            output_dir/data
+            output
+            output/data
   deploy:
     name: Deploy to GitHub Pages
     needs: build
