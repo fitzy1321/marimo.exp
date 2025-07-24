@@ -1,8 +1,14 @@
 # Custom
 justfile
+**/*.md
+**/*.yaml
+**/*.yml
+.ansible-lint
+LICENSE
 
 # Git
 .git
+.gitignore
 .github
 
 # Docker
@@ -20,6 +26,7 @@ build
 venv
 env
 dist
+.python-version
 
 # PyCharm
 .idea
