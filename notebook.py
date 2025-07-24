@@ -1,13 +1,16 @@
 import marimo
 
-__generated_with = "0.14.12"
+__generated_with = "0.14.13"
 app = marimo.App(width="medium", app_title="Fitzy1321 Marimo Notebook")
 
 
 @app.cell
 def _():
+    import os
+
     import marimo as mo
-    return (mo,)
+    import polars as pl
+    return mo, os, pl
 
 
 @app.cell(hide_code=True)
@@ -26,7 +29,7 @@ def _(mo):
 
     ---
 
-    Found this World Population Dataset, from Kaggle. Link provided [here](https://www.kaggle.com/datasets/jinundjanun/population-world-2024). 
+    Found this World Population Dataset, from Kaggle. Link provided [here](https://www.kaggle.com/datasets/jinundjanun/population-world-2024).
 
     I have no idea how the data was sourced, method of collect, etc., but this notebook is only an experiment.
 
@@ -41,15 +44,6 @@ def _(mo):
 
 
 @app.cell
-def _():
-    import os
-    import polars as pl
-    import altair as alt
-    import plotly as plt
-    return os, pl
-
-
-@app.cell
 def _(os):
     # Choose local csv or remote, depending on ENVs
     csv_path = (
@@ -57,6 +51,8 @@ def _(os):
         if os.getenv("MISE_SHELL") or os.getenv("UV")
         else "https://raw.githubusercontent.com/fitzy1321/marimo_exp/refs/heads/main/assets/world_population.csv"
     )
+
+    print(f'Using this csv: {csv_path}')
     return (csv_path,)
 
 
@@ -70,7 +66,7 @@ def _(csv_path, pl):
 @app.cell
 def _(pdf, pl):
     # What's the top 10 rated countries? What does 'Rank' meak here?
-    top_10 = pdf.filter(pl.col('Rank').is_in(range(1,11))).sort('Rank')
+    top_10 = pdf.filter(pl.col("Rank").is_in(range(1, 11))).sort("Rank")
     top_10
     return
 
@@ -80,10 +76,10 @@ def _(pdf, pl):
     # What's the bottom 20 countries?
 
     # Get the highest number from 'Rank' col
-    bottom_num = pdf.select(pl.col('Rank').max()).item()
-    bottom_range = range(bottom_num, bottom_num-20, -1)
+    bottom_num = pdf.select(pl.col("Rank").max()).item()
+    bottom_range = range(bottom_num, bottom_num - 20, -1)
     # use predicate to find bottom 10 counties
-    bottom_10 = pdf.filter(pl.col('Rank').is_in(bottom_range)).sort('Rank')
+    bottom_10 = pdf.filter(pl.col("Rank").is_in(bottom_range)).sort("Rank")
     bottom_10
     return
 
