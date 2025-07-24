@@ -20,3 +20,8 @@ marimo_read:
 [doc("Build a docker image with current 'notebook.py' marimo notebook")]
 docker-build:
     docker build -t marimo-exp .
+
+docker-run:
+    docker run -d --rm -p 2718:8080 --add-host=host.docker.internal:host-gateway -v marmi-exp:/app/backend/data --name marimo-notebook marimo-exp:latest
+    sleep 1
+    open http://localhost:2718
