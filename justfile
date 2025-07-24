@@ -16,3 +16,7 @@ marimo_edit:
 [doc("start marimo notebook in readonly mood")]
 marimo_read:
     uv run marimo read notebook.py
+
+[doc("Build a docker image with current 'notebook.py' marimo notebook")]
+docker-build:
+    docker build -t marimo-exp .

@@ -1,0 +1,28 @@
+# Custom
+justfile
+
+# Git
+.git
+.github
+
+# Docker
+docker-compose.yl
+Dockerfile
+.dockerignore
+.docker
+
+# Python
+.env
+.venv
+.__marimo__
+**/__pycache__
+build
+venv
+env
+dist
+
+# PyCharm
+.idea
+
+# VS Code
+.vscode
