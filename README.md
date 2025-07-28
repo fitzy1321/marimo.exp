@@ -1,4 +1,4 @@
-# marimo_exp
+# marimo.exp
 
 Marimo Experiment, run on github pages
 

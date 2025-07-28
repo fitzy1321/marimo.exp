@@ -1,8 +1,4 @@
-FROM python:3.13-slim AS base
-
-# Set UV_VERSION var?
-COPY --from=ghcr.io/astral-sh/uv:0.8.2 /uv /uvx /bin/
-# ENV UV_SYSTEM_PYTHON=1
+FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim AS base
 
 RUN apt-get update && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/*

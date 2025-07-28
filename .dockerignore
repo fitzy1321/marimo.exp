@@ -17,6 +17,9 @@ Dockerfile
 .dockerignore
 .docker
 
+# Mac
+**/.DS_Store
+
 # Python
 .env
 .venv
