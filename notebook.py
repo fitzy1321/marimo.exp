@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.14.13"
+__generated_with = "0.14.16"
 app = marimo.App(width="medium", app_title="Fitzy1321 Marimo Notebook")
 
 
@@ -52,7 +52,7 @@ def _(os):
         else "https://raw.githubusercontent.com/fitzy1321/marimo_exp/refs/heads/main/assets/world_population.csv"
     )
 
-    print(f'Using this csv: {csv_path}')
+    print(f"Using this csv: {csv_path}")
     return (csv_path,)
 
 

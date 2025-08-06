@@ -1,7 +1,7 @@
 [project]
 name = "marimo.exp"
 version = "0.1.0"
-description = "Add your description here"
+description = "Experimenting with Marimo Notebooks."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
