@@ -9,7 +9,8 @@ dependencies = [
     "marimo>=0.14",
     "plotly>=6.2.0",
     "polars>=1.31.0",
+    "tinydb>=4.8.2",
 ]
 
 [dependency-groups]
-dev = ["pytest>=8.4.1", "ruff>=0.12.5"]
+dev = ["pytest>=8.4.1", "ruff>=0.12"]
