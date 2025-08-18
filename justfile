@@ -11,7 +11,7 @@ export_readonly:
 
 [doc("start marimo notebook in edit mode")]
 marimo_edit:
-    uv run marimo edit notebook.py
+    uv run marimo edit --watch notebook.py
 
 [doc("start marimo notebook in readonly mood")]
 marimo_read:
