@@ -1,6 +1,9 @@
 default:
     just --list
 
+[doc("Spin up marimo notebook.py")]
+run: marimo_edit
+
 [doc("Export marimo notebook in edit mode")]
 export_edit:
     uv run marimo export html-wasm notebook.py -o build --mode edit
