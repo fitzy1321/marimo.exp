@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.14.16"
+__generated_with = "0.17.8"
 app = marimo.App(width="columns")
 
 
@@ -79,9 +79,9 @@ def _(WeightUnits, kg_to_lbs, lbs_to_kg, mo):
         except:
             return
         if event == WeightUnits.KILOS:
-            weight_text.value = lbs_to_kg(x)
+            weight_text.value = str(lbs_to_kg(x))
         elif event == WeightUnits.POUNDS:
-            weight_text.text = kg_to_lbs(x)
+            weight_text.text = str(kg_to_lbs(x))
 
 
     unit_radio._on_change = conversions

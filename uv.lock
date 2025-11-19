@@ -207,7 +207,7 @@ requires-dist = [
     { name = "altair", specifier = ">=5.5" },
     { name = "marimo", specifier = ">=0.17" },
     { name = "plotly", specifier = ">=6.3" },
-    { name = "polars", specifier = ">=1.33" },
+    { name = "polars", specifier = ">=1.35" },
     { name = "tinydb", specifier = ">=4.8.2" },
 ]
 
