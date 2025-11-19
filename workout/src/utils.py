@@ -1,9 +1,11 @@
 from abc import ABC, abstractmethod
 from copy import deepcopy
-from datetime import datetime, date
-from tinydb.middlewares import Middleware
-from tinydb import TinyDB
+from datetime import date, datetime
 from typing import Type
+
+from tinydb import TinyDB
+from tinydb.middlewares import Middleware
+
 
 class Serializer(ABC):
     """
@@ -55,6 +57,7 @@ class DateSerializer(Serializer):
     def decode(self, s):
         return date.fromisoformat(s)
 
+
 def _enumerate_element(element):
     """
     Make an element enumerable.
@@ -101,9 +104,7 @@ def _encode_deep(element, serializer, tag, obj_class):
     for key, value in _enumerate_element(element):
         if isinstance(value, obj_class):
             encoded = serializer.encode(value)
-            element[key] = (
-                tag if type(encoded) == str else tag.encode()
-            ) + encoded
+            element[key] = (tag if type(encoded) == str else tag.encode()) + encoded
 
         elif isinstance(value, (dict, list, tuple)):
             _encode_deep(value, serializer, tag, obj_class)
@@ -125,7 +126,7 @@ def has_encodeable(element, obj_class):
     return found_encodeable
 
 
-class SerializationMiddleware(Middleware):
+class JSONStorageSupportsDates(Middleware):
     """
     Provide custom serialization for TinyDB.
     This middleware allows users of TinyDB to register custom serializations.
@@ -138,10 +139,12 @@ class SerializationMiddleware(Middleware):
         storage_cls: Type = TinyDB.default_storage_class,
         serializers: dict[str, Serializer] | None = None,
     ):
-        super(SerializationMiddleware, self).__init__(storage_cls)
+        super(JSONStorageSupportsDates, self).__init__(storage_cls)
 
         self._serializers = (
-            {} if serializers is None or not serializers else serializers
+            {"Date": DateSerializer(), "DateTime": DateTimeSerializer()}
+            if serializers is None or not serializers
+            else serializers
         )
 
     def register_serializer(self, serializer, name):

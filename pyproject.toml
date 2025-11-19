@@ -3,14 +3,14 @@ name = "marimo.exp"
 version = "0.1.0"
 description = "Experimenting with Marimo Notebooks."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
     "altair>=5.5",
-    "marimo>=0.15",
+    "marimo>=0.17",
     "plotly>=6.3",
-    "polars>=1.33",
+    "polars>=1.35",
     "tinydb>=4.8.2",
 ]
 
 [dependency-groups]
-dev = ["pytest>=8.4", "ruff>=0.12"]
+dev = ["pytest>=9", "ruff>=0.14"]
